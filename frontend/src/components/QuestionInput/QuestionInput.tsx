@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState , ChangeEvent} from "react";
 import { Stack, TextField } from "@fluentui/react";
 import { SendRegular } from "@fluentui/react-icons";
 import Send from "../../assets/Send.svg";
@@ -14,9 +14,21 @@ interface Props {
 
 export const QuestionInput = ({ onSend, disabled, placeholder, clearOnSend, conversationId }: Props) => {
     const [question, setQuestion] = useState<string>("");
+    const maxCharacterCount = 2500; // Set your desired character limit here
 
+    const handleInputChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        const inputText = e.target.value;
+        setQuestion(inputText);
+    
+        // Check if character count exceeds the limit
+        if (inputText.length > maxCharacterCount) {
+          e.target.setCustomValidity('Character count exceeds 2500');
+        } else {
+          e.target.setCustomValidity('');
+        }
+      };
     const sendQuestion = () => {
-        if (disabled || !question.trim()) {
+        if (disabled || !question.trim()|| question.length > maxCharacterCount)  {
             return;
         }
 
@@ -42,7 +54,7 @@ export const QuestionInput = ({ onSend, disabled, placeholder, clearOnSend, conv
         setQuestion(newValue || "");
     };
 
-    const sendQuestionDisabled = disabled || !question.trim();
+    const sendQuestionDisabled = disabled || !question.trim() || question.length > maxCharacterCount;
 
     return (
         <Stack horizontal className={styles.questionInputContainer}>
@@ -69,7 +81,7 @@ export const QuestionInput = ({ onSend, disabled, placeholder, clearOnSend, conv
                     <img src={Send} className={styles.questionInputSendButton}/>
                 }
             </div>
-            <div className={styles.questionInputBottomBorder} />
+            <div className={styles.questionInputBottomBorder}> <p style={{ fontSize: '12px',  marginLeft: '8px' , padding: '2px' }}> {question.length}/{maxCharacterCount}</p></div>
         </Stack>
     );
 };
