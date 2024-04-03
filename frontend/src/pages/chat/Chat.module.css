@@ -20,7 +20,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: radial-gradient(108.78% 108.78% at 50.02% 19.78%, #dae1e2 57.29%, #c5d9ee 100%);
+    background: radial-gradient(108.78% 108.78% at 50.02% 19.78%, #e3e8e9 57.29%, #a2acb6 100%);
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.14), 0px 0px 2px rgba(0, 0, 0, 0.12);
     border-radius: 8px;
     overflow-y: auto;
@@ -85,7 +85,7 @@
 .chatMessageUserMessage {
     display: flex;
     padding: 20px;
-    background: #d3d9df;
+    background: #f8fafd;
     border-radius: 8px;
     box-shadow: 0px 2px 4px rgba(4, 17, 19, 0.14), 0px 0px 2px rgba(0, 0, 0, 0.12);
     font-style: normal;

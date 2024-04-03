@@ -714,7 +714,7 @@ const Chat = () => {
                                     role="button"
                                     styles={{
                                         icon: {
-                                            color: '#FFFFFF',
+                                            color: '#ebedf0',
                                         },
                                         iconDisabled: {
                                             color: "#BDBDBD !important"
